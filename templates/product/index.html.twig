@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nos produits{% endblock %}
+
+{% block body %}
+
+    {# Filtrage de produits par catégorie #}
+    <div class="row">
+        <div class="col-md-2">
+            <h3>Filtrer</h3>
+            {{ form_start(form) }}
+            {{ form_widget(form) }}
+        </div>
+
+        <div class="col-md-10">
+            <h3 class="mb-5">Nos produits</h3>
+            {% if products is empty %}
+                <p>Aucun produit trouvé.</p>
+            {% else %}
+                <div class="row">
+                    {% for success in app.flashes('success') %}
+                        <div id="flash-message" class="alert alert-success" style="display:none">
+                            {{ success }}
+                        </div>
+                    {% endfor %}
+
+                    {% for product in products %}
+                        <div class="col-md-4 col-sm-6 col-xs-12">
+                            {% include 'product/single_product.html.twig' %}
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+
+    {% endblock %}
+
+    {% block javascripts %}
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/11.0.2/css/bootstrap-slider.min.css" integrity="sha512-vu31kD/t3Hq3y7pITeRK5g5qlKjQ6uSSR6H5d6Ufi7VUZqf3q7ouUyF5z5b5EoItFvEd8PZnSdKXAcddbrTYbg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/11.0.2/bootstrap-slider.min.js" integrity="sha512-XNwKPdZm3qZ1Kp9AZ+OJ20GLxbFCbLhsyKXPW1+eRHw+sGktvY82+EKY8yP86n0CfPRNOvMDUhZtQ8Z9TbTlLg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    {% endblock %}

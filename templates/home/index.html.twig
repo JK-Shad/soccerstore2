@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} SoccerStore {% endblock %}
+
+{% block body %}
+{% block carousel %}{% endblock %}
+    <div class="container mt-5">
+        <h1>Les favoris de nos clients </h1>
+        <p>Découvrez notre sélection des produits les plus populaires !</p>
+        <div class="row">
+            {% for product in products %}
+                <div class="col-md-3">
+                    {% include 'product/single_product.html.twig' %}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
+

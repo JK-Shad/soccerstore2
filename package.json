@@ -1,0 +1,23 @@
+{
+  "devDependencies": {
+    "@fortawesome/fontawesome-free": "^6.2.1",
+    "@symfony/webpack-encore": "^4.2.0",
+    "webpack": "^5.76.2",
+    "webpack-notifier": "^1.15.0"
+  },
+  "dependencies": {
+    "@babel/core": "^7.21.0",
+    "@babel/preset-env": "^7.20.2",
+    "@hotwired/stimulus": "^3.2.1",
+    "@stripe/stripe-js": "^1.46.0",
+    "@symfony/stimulus-bridge": "^3.2.1",
+    "aos": "^2.3.4",
+    "bootstrap": "^5.2.3",
+    "jquery": "^3.6.3"
+  },
+  "name": "soccerstore",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "JK-Shad <jhluemba912@gmail.com>",
+  "license": "MIT"
+}

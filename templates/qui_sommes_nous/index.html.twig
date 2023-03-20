@@ -1,20 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello QuiSommesNousController!{% endblock %}
+{% block title %}Qui Sommes-Nous{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/xampp/htdocs/symfony/soccerstore/src/Controller/QuiSommesNousController.php'|file_link(0) }}">src/Controller/QuiSommesNousController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/xampp/htdocs/symfony/soccerstore/templates/qui_sommes_nous/index.html.twig'|file_link(0) }}">templates/qui_sommes_nous/index.html.twig</a></code></li>
-    </ul>
-</div>
+    <div class="container">
+        <h1 class="text-center">Qui Sommes-Nous ?</h1>
+        <p class ="mt-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus minus rem repellat sit soluta tempora vitae atque eveniet aperiam laborum! Vitae dolorem itaque iure voluptatum! Ipsum laborum odio quod necessitatibus!</p>
+        <img src="{{ asset('uploads/bg5.jpg') }}" alt="bg" class="img-fluid" srcset="">
+    </div>
 {% endblock %}

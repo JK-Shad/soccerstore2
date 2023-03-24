@@ -30,7 +30,7 @@ class AssistanceType extends AbstractType
             ->add('submit', SubmitType::class,[
                 'label'=> 'Envoyer',
                 'attr' => [
-                    'class' => 'btn btn-danger col-md-6 mt-5 mx-auto d-flex justify-content-center' 
+                    'class' => 'btn btn-primary col-md-6 mt-5 mx-auto d-flex justify-content-center' 
                 ]
             ])
                

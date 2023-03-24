@@ -97,7 +97,7 @@
                 <div class="float-end mt-5">
                     <b>Nombre de produit : </b> {{ cart|length }}<br>
                     <b>Total : </b> {{ total / 100 | number_format(2, '.', '.') }} €<br>
-                    <a href="{{ path('order') }}" class="btn btn-success btn-block mt-5">Valider mon panier</a>
+                    <a href="{{ path('order') }}" class="btn btn-info btn-block mt-5">Valider mon panier</a>
                 </div>
             {% endif %}
         </div>

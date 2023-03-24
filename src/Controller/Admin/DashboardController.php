@@ -2,6 +2,7 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\Assistance;
 use App\Entity\Carousel;
 use App\Entity\Carrier;
 use App\Entity\Category;
@@ -118,6 +119,8 @@ class DashboardController extends AbstractDashboardController
             ->setDefaultSort(['id' => 'DESC'])
             ->setCssClass('text-uppercase font-weight-bold text-warning')
             ->setPermission('ROLE_ADMIN');
+
+        yield MenuItem::linkToCrud('Assistance','fa-solid fa-headphones', Assistance::class);
     }
 
     public function configureActions(): Actions

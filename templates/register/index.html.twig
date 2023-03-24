@@ -3,8 +3,8 @@
 {% block title %}Inscription{% endblock %}
 
 {% block body %}
-    <div class="container" style="margin-top: 150px;">
-        <div class="card-login col-md-4 mx-auto">
+    <div class="container">
+        {# <div class="card-login col-md-4 mx-auto">
             {% for type, messages in app.flashes %}
                 {% for message in messages %}
                     <div class="alert alert-{{ type }} alert-dismissible fade show" role="alert">
@@ -22,12 +22,12 @@
                 </div>
             {% endif %}
 
-            <div class="w3-container w3-teal">
+            <div class="w3-container w3-light-blue">
                 <h2>Inscription</h2>
             </div>
             <div class="w3-container w3-card-4 pb-5">
                 <div class="mt-5">
-                    {{ form(form) }}
+                    {{ form(form), {'class': 'form-control'} }}
                 </div>
             </div>
             <br>
@@ -35,6 +35,26 @@
                 <div class="w3-center">
                     <p class="mt-2">Déjà membre ? <a class="w3-text-teal" href="{{ path('app_login') }}">Se connecter</a></p>
                 </div>
+            </div>
+        </div> #}
+        <div class="row justify-content-center">
+            <div class="col-xl-5 col-md-8 w3-card w3-padding-16">
+                {{ form_start(form) }}
+                    <div class="form-outline mb-4">
+                        {{ form_row(form.firstname, {'class': 'form-control'}) }}
+
+                        {{ form_row(form.lastname, {'class': 'form-control'}) }}
+
+                        {{ form_row(form.email, {'class': 'form-control'}) }}
+
+                        {{ form_row(form.password, {'class': 'form-control'}) }}
+            
+                        {{ form_row(form.submit, {'class': ''}) }}
+                    </div> 
+                {{ form_end(form) }}
+            </div>
+            <div class="w3-center">
+                <p class="mt-2">Déjà membre ? <a class="w3-text-teal" href="{{ path('app_login') }}">Se connecter</a></p>
             </div>
         </div>
     </div>

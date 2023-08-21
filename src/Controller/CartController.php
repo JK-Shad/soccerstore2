@@ -19,6 +19,17 @@ class CartController extends AbstractController
 
     public function __construct(EntityManagerInterface $em, Cart $cart, SessionInterface $session)
     {
+        /* $this->cart = $cart: 
+
+        Ce code est une instruction qui affecte la valeur de la variable $cart à la propriété $cart de l'objet en cours. 
+        Cette instruction est utilisée dans une méthode d'une classe pour initialiser ou mettre à jour la valeur d'une propriété.
+
+        Dans ce cas, cette ligne de code assigne la valeur de la variable $cart à la propriété $cart de l'objet en cours. 
+        La variable $cart représente probablement le panier de l'utilisateur, qui est passé en paramètre de la méthode ou du constructeur de la classe.
+        En affectant cette valeur à la propriété $cart, la classe peut accéder au panier de l'utilisateur dans d'autres méthodes,
+        sans avoir à le passer en paramètre à chaque fois. 
+        */
+        
         $this->cart = $cart;
         $this->session = $session;
         $this->em = $em;

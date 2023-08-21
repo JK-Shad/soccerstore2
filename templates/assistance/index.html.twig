@@ -16,7 +16,7 @@
                 {% endif %}
                 {{ form_start(form) }}
                     <div class="col-md-6 mx-auto">
-                        {{ form_row(form.firstname) }}
+                        {{ form_row(form.firstname) }} 
                         {{ form_row(form.lastname) }}
                         {{ form_row(form.email) }}
                         {{ form_row(form.contenu) }}
@@ -26,3 +26,7 @@
         
     </div>
 {% endblock %}
+
+{# form_row = est utilisée pour afficher le champ de formulaire en utilisant le modèle de présentation par défaut de Symfony #}
+{# form.firstname est une propriété de l'objet form qui représente le champ de formulaire associé au prénom d'une personne. #}
+{# form est un objet de formulaire créé à partir d'une classe de formulaire Symfony qui définit les champs de formulaire et leurs contraintes de validation. #}

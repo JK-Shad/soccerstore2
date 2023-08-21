@@ -30,7 +30,7 @@
                 {{ form_end(form) }}
             {% endset %}
 
-            {{ formHtml|replace({'[br]' : '<br>'})|raw }}
+            {{ formHtml|replace({'[br]' : '<br>'})|raw}}
 
             <p><b>Vous pouvez modifier votre adresse de livraison en cliquant sur le bouton ci-dessous.</b></p>
             <a href="{{ path('account_address') }}" class="btn btn-primary">Modifier mon adresse de livraison</a>

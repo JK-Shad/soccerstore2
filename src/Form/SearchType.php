@@ -11,20 +11,20 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class SearchType extends AbstractType
+class SearchType extends AbstractType 
 {
     // Permet de configurer le formulaire
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('string', TextType::class, [
-                'label' => 'Rechercher par nom de produit',
-                'required' => false,
-                'attr' => [
-                    'placeholder' => 'Votre recherche...',
-                    'class' => 'form-control mt-3',
-                ]
-            ])
+            // ->add('string', TextType::class, [
+            //     'label' => 'Rechercher par nom de produit',
+            //     'required' => false,
+            //     'attr' => [
+            //         'placeholder' => 'Votre recherche...',
+            //         'class' => 'form-control mt-3', 
+            //     ]
+            // ])
             ->add('categories', EntityType::class, [
                 'label' => 'Chercher par catégorie',
                 'class'=> Category::class,

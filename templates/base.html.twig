@@ -15,18 +15,17 @@
             {{ encore_entry_link_tags('fontawesome') }}
             <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.css" rel="stylesheet" />
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/w3-css/4.1.0/w3.css" integrity="sha512-Ef5r/bdKQ7JAmVBbTgivSgg3RM+SLRjwU0cAgySwTSv4+jYcVeDukMp+9lZGWT78T4vCUxgT3g+E8t7uabwRuw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-            <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet"
-            />
+            <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
         {% endblock %}
 
     </head>
     <body>
-        {% include '_partials/nav.html.twig' %}
+        {% include 'includes/nav.html.twig' %}
 
         <main role="main" class="mb-xxl-5 pt-5">
             {# si le block carousel est défini #}
             {% if block ('carousel') is defined %}
-                {% include '_partials/carousel.html.twig' %}
+                {% include 'includes/carousel.html.twig' %}
             {% endif %}
 
             {# si le block carousel n'est pas défini, alors ajoute un margin-top de 5 #}

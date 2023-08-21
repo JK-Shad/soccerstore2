@@ -18,8 +18,6 @@ class RegisterController extends AbstractController
     private EntityManagerInterface $em;
     private RegisterEmailService $emailService;
 
-    const SUCCESS_MESSAGE = 'Votre compte a bien été créé. Vous pouvez dès à présent vous connecter.';
-    const WARNING_MESSAGE = 'L\'email renseignée existe déjà. Vous pouvez vous connecter.';
 
     public function __construct(EntityManagerInterface $em, RegisterEmailService $emailService)
     {
@@ -30,18 +28,32 @@ class RegisterController extends AbstractController
     #[Route('/register', name: 'inscription')]
     public function index(Request $request, UserPasswordHasherInterface $hasher, LoggerInterface $logger): Response
     {
-        $user = new User();
+        /*
+           Création d'une nouvelle instance de la classe User 
+           On stocke dans la propriété $user toutes les propriétés et méthodes de la classe User
+        */
+        $user = new User(); 
+        
+        /*
+        On stocke dans la propriété $form, le RegisterType qui est liée à la propriété User
+        $form va permettre de générer le formulaire 
+        */
         $form = $this->createForm(RegisterType::class, $user);
 
+        // permet de traiter la demande de soumission de formulaire en utilisant l'objet de formulaire $form et l'objet de requête HTTP $request.
         $form->handleRequest($request);
+        
 
         if ($form->isSubmitted() && $form->isValid()) {
+            /* Dans ce cas, $user = $form->getData(); récupère les données soumises dans le formulaire et les stocke dans la variable $user. 
+            La méthode getData() renvoie les données soumises sous forme d'objet ou d'array, en fonction de la configuration du formulaire. */
             $user = $form->getData();
 
-            // On vérifie si l'utilisateur n'existe pas déjà dans la base de données
-            $existingUser = $this->em->getRepository(User::class)->findOneBy(['email' => $user->getEmail()]);
 
-            if (!$existingUser) {
+            $UserIsOk = $this->em->getRepository(User::class)->findOneBy(['email' => $user->getEmail()]);
+            
+            // On vérifie si l'utilisateur n'existe pas déjà dans la base de données
+            if (!$UserIsOk) {
                 // Hasher le mot de passe
                 $hashedPassword = $hasher->hashPassword($user, $user->getPassword());
                 $user->setPassword($hashedPassword);
@@ -53,12 +65,12 @@ class RegisterController extends AbstractController
                 // Envoyer un email de confirmation à l'utilisateur
                 $this->emailService->sendRegistrationConfirmationEmail($user);
 
-                $this->addFlash('success', self::SUCCESS_MESSAGE);
+                $this->addFlash('success', 'Votre compte a bien été créé. Vous pouvez dès à présent vous connecter.');
 
                 // Une fois le compte créé on vide le formulaire
                 return $this->redirectToRoute('inscription');
             } else {
-                $this->addFlash('warning', self::WARNING_MESSAGE);
+                $this->addFlash('warning', 'L\'email renseignée existe déjà. Vous pouvez vous connecter.');
             }
         }
 

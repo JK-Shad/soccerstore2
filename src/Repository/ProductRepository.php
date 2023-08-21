@@ -42,6 +42,7 @@ class ProductRepository extends ServiceEntityRepository
                 ->andWhere('c.id IN (:categories)')
                 ->setParameter('categories', $search->categories);
         }
+        
         // Si le nom de la recherche est présent dans la chaine de caractère de la recherche alors on affiche les produits
         if (!empty($search->string)) {
             $query = $query

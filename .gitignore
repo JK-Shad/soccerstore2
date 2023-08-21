@@ -1,6 +1,5 @@
 
 ###> symfony/framework-bundle ###
-/id_rsa
 /.env.local
 /.env.local.php
 /.env.*.local

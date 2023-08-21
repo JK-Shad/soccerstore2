@@ -107,7 +107,7 @@ class RegisterType extends AbstractType
             ->add('submit', SubmitType::class, [
                 'label' => 'S\'inscrire',
                 'attr' => [
-                    'class' => 'btn w3-teal btn-block w-100',
+                    'class' => 'btn w3-light-blue btn-block w-100',
                 ],
             ])
         ;

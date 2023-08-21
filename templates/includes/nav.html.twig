@@ -1,0 +1,68 @@
+
+<nav class="navbar navbar-expand-lg w3-indigo fixed-top">
+    <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <a class="navbar-brand mt-2 mt-lg-0" href="#">
+                <a class="navbar-brand text-dark" href="{{ path('home') }}">SoccerStore</a>
+            </a>
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="{{ path('products') }}"> <i class="fas fa-store"></i> Boutique</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link  text-white" href="{{ path('qui-sommes-nous') }}">Qui sommes-nous ?</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link btn bg-black  text-white" href="{{ path('assistance') }}"><i class="fa-solid fa-headphones"></i>Assistance</a>
+                </li>
+            </ul>
+            <div class="mx-auto d-flex">
+                {% include 'includes/search.html.twig' %}
+            </div>
+        </div>
+
+        <div class="d-flex align-items-center">
+            <div class="dropdown">
+                {% if not is_granted("ROLE_ADMIN") and is_granted("ROLE_USER") %}
+                    <a class="dropdown-toggle d-flex align-items-center text-center text-white custom-dropdown-link" href="#" id="navbarDropdownMenuAvatar" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+                       <i class="fas fa-user-circle"></i>&nbsp;{{ app.user.firstname }}
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
+                        <li><a class="dropdown-item" href="{{ path('app_account') }}">Profile</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="{{ path('app_logout') }}"><i class="fas fa-right-from-bracket"></i> Déconnexion</a></li>
+                    </ul>
+                {% endif %}
+
+                {% if is_granted("ROLE_ADMIN") %}
+                    <a class="dropdown-toggle d-flex align-items-center text-center text-white custom-dropdown-link" href="#" id="navbarDropdownMenuAvatar" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+                       <i class="fas fa-user-circle"></i>&nbsp;{{ app.user.firstname }}
+                    </a>
+                    {# <small class="mx-auto"> {{ app.user.firstname }}</small> #}
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
+                        <li><a class="dropdown-item" href="{{ path('admin') }}">Espace admin</a></li>
+                        <li><a class="dropdown-item" href="{{ path('app_account') }}">Profile</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="{{ path('app_logout') }}">Déconnexion</a></li>
+                    </ul>
+                {% endif %}
+
+            </div>
+            <div class="dropdown" style="margin-right: 6rem">
+                {% if not is_granted("ROLE_ADMIN") and not is_granted("ROLE_USER") %}
+                    <a class="d-flex align-items-center hidden-arrow btn w3-black custom-dropdown-link" href="{{ path('app_login') }}">
+                        <i class="fas fa-user-circle"></i>&nbsp;Compte
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="d-flex align-items-center">
+            <a class="text-reset me-3" href="{{ path('cart') }}"><i class="fas fa-shopping-cart"></i></a>
+        </div>
+    </div>
+</nav>

@@ -8,9 +8,9 @@ use Psr\Log\LoggerInterface;
 
 class Mail
 {
-    const FROM_EMAIL = 'paterne81@hotmail.fr';
-    const FROM_NAME = 'Boutique Poles';
-    const TEMPLATE_ID = 4627741;
+    const FROM_EMAIL = 'jhluemba@hotmail.com';
+    const FROM_NAME = 'SoccerStore';
+    const TEMPLATE_ID = 4701615;
 
     private LoggerInterface $logger;
 

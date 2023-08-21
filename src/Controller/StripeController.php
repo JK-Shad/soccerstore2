@@ -21,9 +21,7 @@ class StripeController extends AbstractController
         $productsForStripe = [];
 
         $order = $em->getRepository(Order::class)->findOneByRef(['ref' => $ref]);
-       /* if (!$order instanceof Order) {
-            throw new \RuntimeException('Order not found');
-        }*/
+       
         if (!$order) {
             new JsonResponse(['error' => 'order']);
         }
@@ -57,7 +55,7 @@ class StripeController extends AbstractController
             // On ajoute le prix du transporteur
         ];
 
-        Stripe::setApiKey('sk_test_51MctScAfpYZJnEmGpSaAbZEGqoeUQsjIh0mo25uFmXNWC0b0AUiZlDQkAGZHpJknmFDf5jyiFye9l7YFmDxzu4O4006S2kXHd4');
+        Stripe::setApiKey('sk_test_51MrgOMLCxsZ2tP5djJmFcbAOC1sqCw49MyPuT7plcWGUYCBrCSKpLYh3D3bZde5cQ7PNtWKUmprTvCa5sFoNlNH800H4ZPZPrw');
 
         $checkoutSession = Session::create([
             'customer_email' => $this->getUser()->getEmail(),
@@ -66,9 +64,7 @@ class StripeController extends AbstractController
             'mode' => 'payment',
             'success_url' => $YOUR_DOMAIN . '/commande/success/{CHECKOUT_SESSION_ID}',
             'cancel_url' => $YOUR_DOMAIN . '/commande/failed/{CHECKOUT_SESSION_ID}',
-            /*'automatic_tax' => [
-                'enabled' => true,
-            ],*/
+
         ]);
 
         $order->setStripeSessionId($checkoutSession->id); // On enregistre l'id de la session Stripe dans notre commande

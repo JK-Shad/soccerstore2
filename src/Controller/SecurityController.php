@@ -31,6 +31,7 @@ class SecurityController extends AbstractController
     #[Route(path: '/deconnexion', name: 'app_logout')]
     public function logout(): void
     {
+        //  Elle est utilisée pour signaler une erreur ou une condition exceptionnelle dans le code.
         throw new LogicException('This method can be blank - it will be intercepted by the logout key on your firewall.');
     }
 }

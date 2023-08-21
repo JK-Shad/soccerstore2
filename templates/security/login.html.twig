@@ -3,53 +3,54 @@
 {% block title %}Connexion{% endblock %}
 
 {% block body %}
-    <div class="container" style="margin-top: 150px;">
-        <div class="card-login col-md-4 mx-auto justify-content-center align-content-center">
-            {% if error %}
-                <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                    <strong>{{ error.messageKey|trans(error.messageData, 'security') }}</strong>
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-            {% endif %}
-            <div class="w3-container w3-teal">
-                <h2>CONNEXION</h2>
-            </div>
-            <form method="post" class="w3-container w3-card-4">
-               {# {% if app.user %}
-                    <div class="mb-3">
-                        Salut {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Déconnexion</a>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-xl-5 col-md-8">
+                {% if error %}
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <strong>{{ error.messageKey|trans(error.messageData, 'security') }}</strong>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
-                {% endif %}#}
-                <br>
-                <p>
-                    <label class="w3-text-grey">Email</label><br>
-                    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="w3-input border" autocomplete="email" required autofocus>
-                </p>
-                <p>
-                    <label class="w3-text-grey">Mot de passe</label><br>
-                    <input type="password" name="password" id="inputPassword" class="w3-input w3-border" required autocomplete="current-password">
-                </p>
-                <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+                {% endif %}
+                <form method="post" class="bg-white  rounded-5 shadow-5-strong p-5">
+                    <div class="form-outline mb-4">
+                        <input type="email" value="{{ last_username }}" name="email" id="form1Example1" class="form-control">
+                        <label class="form-label" for="form1Example1" style="margin-left: 0px;">Adresse Email</label>
+                        <div class="form-notch">
+                            <div class="form-notch-leading" style="width: 9px;"></div>
+                            <div class="form-notch-middle" style="width: 88.8px;"></div>
+                            <div class="form-notch-trailing"></div>
+                        </div>
+                    </div>
+                    <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 
-                <br>
-                <div class="w3-row">
-                    <div class="w3-half">
-                        <input class="w3-check" type="checkbox" name="_remember_me">
-                        <label> Se souvenir de moi</label>
-                        <br><br>
+                    <div class="form-outline mb-4">
+                        <input type="password" name="password" id="form1Example2" class="form-control">
+                        <label class="form-label" for="form1Example2" style="margin-left: 0px;">Mot de Passe</label>
+                        <div class="form-notch">
+                            <div class="form-notch-leading" style="width: 9px;"></div>
+                            <div class="form-notch-middle" style="width: 64.8px;"></div>
+                            <div class="form-notch-trailing"></div>
+                        </div>
                     </div>
-                </div>
-                <div class="w3-row mb-5">
-                    <div class="w3-col m12 mb-5 w3-center">
-                        <button type="submit" class="btn w3-padding w-100 w3-teal" style="width:50%">Connexion &nbsp; ❯</button>
+
+                    <div class="row mb-4">
+                        <div class="col d-flex justify-content-center">
+                            <div class="form-check">
+                            <input class="form-check-input" name="_remember_me" type="checkbox" id="form1Example3">
+                            <label class="form-check-label" for="form1Example3">
+                                Se souvenir de moi
+                            </label>
+                            </div>
+                        </div>
                     </div>
-                    <div class="w3-col m12 w3-center">
-                        <p class="mt-2 text-primary"> <a href="#">Mot de passe oublié.</a></p>
+
+                    <button type="submit" class="btn btn-primary btn-block">Connexion &nbsp; ❯</button>
+                    <div class="w3-center mt-3">
+                        <p> <a href="#">Mot de passe oublié.</a></p>
+                        <p>Pas encore inscrit ?  <a class="text-primary" href="{{ path('inscription') }}">Créer un compte</a></p>
                     </div>
-                </div>
-            </form>
-            <div class="w3-col m12 w3-center mt-5">
-                <p class="mt-2">Pas encore inscrit ?  <a class="text-primary" href="{{ path('inscription') }}">Créer un compte</a></p>
+                </form>
             </div>
         </div>
     </div>

@@ -18,7 +18,7 @@
                 <p>{{ product.subtitle }}</p>
                 <p class="mt-5">{{ product.description | striptags }}</p>
                 <div class="btn-group mt-5">
-                    Taille: sm - xs - l - m - xl - xxl
+                    Taille: SM - XS - L - M - XL - XXL
                 </div>
             </div>
 
@@ -30,8 +30,6 @@
                     <h4 class="text-muted mt-5">
                         <b>Total: {{ (product.price / 100)|number_format(2, ',', ',') }} € </b>
                     </h4>
-                    <p class="mt-2">Livraison gratuite dès 50 €.</p>
-                    <p>Livré à : Paterne - 142 av Pantin</p>
                     <p class="text-success"> {{ product.isStock }} en stock</p>
                     {%  else %}
                     <p class="text-danger {% if product.isStock < 50 %}mt-5{% endif %}">En rupture de stock</p>
@@ -44,7 +42,6 @@
                            <a href="#" onclick="addToFavorites({{ product.id }}); return false;">Ajouter aux favoris</a>
                         </div>
                         <div class="col-md-6">
-                           <a href="{{ path('cart_favorite', { 'id': product.id }) }}">Mettre à coté</a>
                         </div>
                     {% else %}
                         <div class="col-md-12">
@@ -62,16 +59,6 @@
             </ul>
         </div>
         <hr>
-
-        <h1>Les favoris de nos clients </h1>
-        <p>Découvrez notre sélection des produits les plus populaires !</p>
-        <div class="row">
-            {% for product in products %}
-                <div class="col-md-3">
-                    {% include 'product/single_product.html.twig' %}
-                </div>
-            {% endfor %}
-        </div>
     </div>
 {% endblock %}
 

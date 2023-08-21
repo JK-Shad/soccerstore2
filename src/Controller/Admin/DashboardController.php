@@ -2,6 +2,7 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\Assistance;
 use App\Entity\Carousel;
 use App\Entity\Carrier;
 use App\Entity\Category;
@@ -27,8 +28,7 @@ class DashboardController extends AbstractDashboardController
     #[Route('/admin', name: 'admin')]
     public function index(): Response
     {
-        //return parent::index();
-
+         //return parent::index();
         // Option 1. You can make your dashboard redirect to some common page of your backend
         //
         $adminUrlGenerator = $this->container->get(AdminUrlGenerator::class);
@@ -47,10 +47,18 @@ class DashboardController extends AbstractDashboardController
         //return $this->render('@EasyAdmin/page/login.html.twig');
     }
 
+    
     public function impersonate(User $user): RedirectResponse
+    /*  Ce code signifie teste si l'utilisateur courant a le rôle d'administrateur (ROLE_ADMIN). 
+        Si l'utilisateur n'a pas ce rôle, une exception de type AccessDeniedException est lancée.
+
+        Plus en détails, $this->isGranted('ROLE_ADMIN') est une méthode qui vérifie si l'utilisateur courant a le rôle d'administrateur. 
+        Si cette méthode retourne false (c'est-à-dire que l'utilisateur n'a pas le rôle d'administrateur), 
+        l'expression !$this->isGranted('ROLE_ADMIN') sera évaluée à true (en raison de l'opérateur ! qui inverse le résultat de la méthode).
+        */
     {
         $this->denyAccessUnlessGranted('ROLE_ALLOWED_TO_SWITCH');
-
+        
         if (!$this->isGranted('ROLE_ADMIN')) {
             throw new AccessDeniedException();
         }
@@ -71,7 +79,7 @@ class DashboardController extends AbstractDashboardController
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
-            ->setTitle('Boutique Poles')
+            ->setTitle('Boutique SoccerStore')
             ->setFaviconPath('favicon.ico')
             ->renderContentMaximized()
             ->setTranslationDomain('admin');
@@ -118,6 +126,9 @@ class DashboardController extends AbstractDashboardController
             ->setDefaultSort(['id' => 'DESC'])
             ->setCssClass('text-uppercase font-weight-bold text-warning')
             ->setPermission('ROLE_ADMIN');
+
+        yield MenuItem::linkToCrud('Assistance','fa-solid fa-headphones', Assistance::class);
+        
     }
 
     public function configureActions(): Actions

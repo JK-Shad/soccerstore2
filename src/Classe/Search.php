@@ -1,9 +1,13 @@
 <?php
 namespace App\Classe;
+ 
 class Search
 {
+
+    // Déclaration des propriétés
+
     /**
-     * @var string|null
+     * @var string|null 
      */
     public ?string $string = '';
     /**
